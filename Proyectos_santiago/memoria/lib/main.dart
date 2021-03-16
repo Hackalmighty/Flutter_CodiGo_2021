@@ -1,5 +1,8 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void tarjetaPresionada(int i) {
-
     setState(() {
       movimientos++;
     });
@@ -62,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
       indicePrimeraTarjeta = i;
     } else {
       if (opciones[indicePrimeraTarjeta] == opciones[i]) {
-
         setState(() {
           giroTarjetas[i] = false;
           giroTarjetas[indicePrimeraTarjeta] = false;
@@ -73,6 +74,31 @@ class _MyHomePageState extends State<MyHomePage> {
         estados_tarjetas[i].currentState.toggleCard();
         indicePrimeraTarjeta = null;
       }
+    }
+    if (movimientos == 6) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Perdisteee"),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: [
+                    Text("Verifica bien oee"),
+                  ],
+                ),
+              ),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      print('perdiste ps');
+                    },
+                    child: Text("Ok")),
+              ],
+            );
+          });
+
+      reiniciar();
     }
   }
 
@@ -97,17 +123,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Text(
-            "$movimientos",
+            "=> $movimientos",
             style: TextStyle(fontSize: 40),
           ),
           Expanded(
             child: GridView.builder(
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemCount: opciones.length,
               itemBuilder: (BuildContext context, int index) {
                 return FlipCard(
-                  flipOnTouch: giroTarjetas[index] && indicePrimeraTarjeta !=index,
+                  flipOnTouch:
+                      giroTarjetas[index] && indicePrimeraTarjeta != index,
                   onFlipDone: (defrente) {
                     if (!defrente) {
                       tarjetaPresionada(index);
