@@ -4,15 +4,19 @@ import 'package:cronometro/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import 'settings.dart';
+
 class TimerHomePage extends StatelessWidget {
   final CountDownTimer timer = CountDownTimer();
 
   @override
   Widget build(BuildContext context) {
-    timer.startWork();
     return Scaffold(
       appBar: AppBar(
         title: Text("Timer"),
+        actions: [IconButton(icon: Icon(Icons.settings), onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (_)=> Settings()));
+        })],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) => Container(
@@ -26,7 +30,9 @@ class TimerHomePage extends StatelessWidget {
                       child: TimerButton(
                         text: "Trabajo",
                         color: Colors.green.shade800,
-                        onPressed: () {},
+                        onPressed: () {
+                          timer.startWork();
+                        },
                       ),
                     ),
                   ),
@@ -36,7 +42,9 @@ class TimerHomePage extends StatelessWidget {
                       child: TimerButton(
                         text: "Break",
                         color: Colors.blueGrey,
-                        onPressed: () {},
+                        onPressed: () {
+                          timer.startBreak();
+                        },
                       ),
                     ),
                   ),
@@ -46,16 +54,21 @@ class TimerHomePage extends StatelessWidget {
                       child: TimerButton(
                         text: "Descanzo",
                         color: Colors.blueGrey.shade700,
-                        onPressed: () {},
+                        onPressed: () {
+                          timer.startDescanzo();
+                        },
                       ),
                     ),
                   ),
                 ],
               ),
               StreamBuilder(
-                initialData: TimerModel("00:00",1),
+                  initialData: TimerModel("00:00", 1),
                   stream: timer.stream(),
                   builder: (context, snapshot) {
+                    if(snapshot.hasError){
+                      return Text(snapshot.error.toString());
+                    }
                     TimerModel timer = snapshot.data;
                     return Expanded(
                       child: CircularPercentIndicator(
@@ -78,7 +91,9 @@ class TimerHomePage extends StatelessWidget {
                       child: TimerButton(
                         text: "Stop",
                         color: Colors.blueGrey.shade900,
-                        onPressed: () {},
+                        onPressed: () {
+                          timer.stop();
+                        },
                       ),
                     ),
                   ),
@@ -88,7 +103,9 @@ class TimerHomePage extends StatelessWidget {
                       child: TimerButton(
                         text: "Restart",
                         color: Colors.green.shade800,
-                        onPressed: () {},
+                        onPressed: () {
+                          timer.restart();
+                        },
                       ),
                     ),
                   ),

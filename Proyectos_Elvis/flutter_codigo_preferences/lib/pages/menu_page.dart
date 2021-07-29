@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_codigo_preferences/widgets/menu_widget.dart';
+import 'file:///D:/CodiGo%20Flutter/Proyectos_santiago/flutter_codigo_preferences/lib/widgets/menu_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuPage extends StatefulWidget {

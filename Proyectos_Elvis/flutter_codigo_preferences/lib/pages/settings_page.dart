@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo_preferences/utils/shared_preferences_global.dart';
 import 'package:flutter_codigo_preferences/widgets/menu_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,6 +17,10 @@ class _SettingsPageState extends State<SettingsPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
+
+  final mandarina = new UserPreference();
+
+
   @override
   void initState() {
     print("Este es el inicio...");
@@ -23,22 +28,29 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   saveValuesSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool("colorSecundario", _colorSecundario ?? false);
-    prefs.setInt("genero", _genero);
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    //prefs.setBool("colorSecundario", _colorSecundario ?? false);
+    //prefs.setInt("genero", _genero);
 
-    prefs.setString("namex", _name);
-    prefs.setString("address", _address);
+    // prefs.setString("namex", _name);
+    // prefs.setString("address", _address);
+
+    mandarina.color =  _colorSecundario ?? false;
+    mandarina.genero = _genero ?? 1;
+    mandarina.name = _name ?? "No tengo nombre";
+    mandarina.address = _address ?? "No tengo dirección";
+
+
 
     print("Color secundario guardado...");
   }
 
   getValuesSharedPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _colorSecundario = (prefs.getBool("colorSecundario")) ?? false;
-    _genero = (prefs.getInt("genero")) ?? 1;
-    _name = prefs.getString("namex");
-    _address = prefs.getString("address");
+    _colorSecundario = (mandarina.color) ?? false;
+    _genero = (mandarina.genero) ?? 1;
+    _name = mandarina.name;
+    _address = mandarina.address;
 
     nameController = TextEditingController(text: _name);
     addressController.text = _address;
@@ -56,7 +68,7 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: Text("Configuración"),
         backgroundColor:
-            _colorSecundario == true ? Colors.pinkAccent : Colors.teal,
+        _colorSecundario == true ? Colors.pinkAccent : Colors.teal,
       ),
       drawer: MenuWidget(),
       body: Center(
@@ -128,7 +140,7 @@ class _SettingsPageState extends State<SettingsPage> {
               child: TextField(
                 controller: addressController,
                 decoration: InputDecoration(
-                    labelText: "Dirección", helperText: "Ingresa tu dirección",),
+                  labelText: "Dirección", helperText: "Ingresa tu dirección",),
                 onChanged: (value) {
                   print(value);
                   _address = value;

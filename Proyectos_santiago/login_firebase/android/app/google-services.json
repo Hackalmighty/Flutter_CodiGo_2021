@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "372020449912",
+    "project_id": "pruebaloginsocial-62e65",
+    "storage_bucket": "pruebaloginsocial-62e65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372020449912:android:505fb46529bd1e7c46138d",
+        "android_client_info": {
+          "package_name": "com.willy.login_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372020449912-429c5qel5rj88a4v8lrn94ch9oq74m80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1ZzW3iKi6s0KLV9e-mvfqjK920PHFHzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372020449912-429c5qel5rj88a4v8lrn94ch9oq74m80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

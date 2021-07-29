@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_codigo_preferences/pages/counter_page.dart';
+import 'file:///D:/CodiGo%20Flutter/Proyectos_santiago/flutter_codigo_preferences/lib/pages/counter_page.dart';
 
 class HomePage extends StatelessWidget {
   @override

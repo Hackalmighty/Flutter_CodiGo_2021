@@ -1,0 +1,2 @@
+String apiUrl = "https://api.spotify.com/v1/";
+String token = "BQCeOInbukwzXn6jFvs8aIFNQxt_zStSpkn2SMZ-bYsI320clB2ZVqvj0rwUBeK-4pSFlb7JyevsLipQo0fknwca95CvwBkoF7juKjN1YDNX5mWwfH85S_lcKueV1z9cOysHPgLMrfi6oouhTjlx_g8jVnVrpM8cte_sGUzEOVyZGm_ZJD4DwY6iQi3cwerbkF1EY_1iRnop18InPmhNivRvSBYzgwf36oHS62sZ1v8wnSa3w6GAciG90qUCZJmuS0oz2dlIi2HIVKidNHVN5KzeCg";
